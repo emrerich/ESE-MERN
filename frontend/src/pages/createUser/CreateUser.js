@@ -6,6 +6,7 @@ const CreateUser = () => {
   const [name, setName] = useState("");
   const [age, setAge] = useState(0);
   const [email, setEmail] = useState("");
+  const [theme, setTheme] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,12 +16,14 @@ const CreateUser = () => {
         name,
         age,
         email,
+        theme,
       });
       console.log("Kullanıcı oluşturuldu:", response.data.user);
-      setUsers((prevUsers) => [...prevUsers, { name, age, email }]);
+      setUsers((prevUsers) => [...prevUsers, { name, age, email, theme }]);
       setName("");
       setAge(0);
       setEmail("");
+      setTheme("");
     } catch (error) {
       console.error("Hata:", error);
     }
@@ -59,6 +62,16 @@ const CreateUser = () => {
               placeholder="Enter email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="theme">Theme</label>
+            <input
+              type="text"
+              name="theme"
+              placeholder="Enter theme"
+              value={theme}
+              onChange={(e) => setTheme(e.target.value)}
             />
           </div>
           <button type="submit">Create User</button>

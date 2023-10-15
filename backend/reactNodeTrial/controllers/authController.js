@@ -2,11 +2,12 @@ const User = require("../models/User");
 
 exports.createUser = async (req, res) => {
   try {
-    console.debug(req.body)
+    console.debug(req.body);
     const user = await User.create({
       age: req.body.age,
       name: req.body.name,
       email: req.body.email,
+      theme: req.body.theme,
     });
     res.status(201).json({
       user,
